@@ -1,12 +1,17 @@
  import Link from "next/link"
 const Navbar = () =>{
     return(
-        <nav>
-        <div className=" flex  flex-row justify-center items-center mb-2 ">
-        <Link href="#home"  className="text-xl font-bold whitespace-nowrap text-color-primary dark:text-color-primary p-4 hover:text-blue-800">Home</Link>
-        <Link href="#about" className="text-xl font-bold whitespace-nowrap text-color-primary p-4 hover:text-blue-800">About</Link>
-        <Link href="/" className="text-xl font-bold whitespace-nowrap text-color-primary p-4 hover:text-blue-800">Portofolio</Link>
-        <Link href="/" className="text-xl font-bold whitespace-nowrap text-color-primary p-4 hover:text-blue-800">Contact</Link>
+        <nav className="bg-color-primary text-color-accent border border-color-secondary shadow-xl">
+        <div className=" flex flex-row justify-evenly  items-center mb-2 p-2">
+            <div className="flex max-w-64 max-h-12 text-2xl font-bold text-color-secondaryAccent">
+                Owen Rudiyanto So
+            </div>
+                <Link href="/"  className="text-2xl font-bold whitespace-nowrap  hover:text-color-secondaryAccent">Home</Link>
+        <Link href="/about" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">About Me</Link>
+        <Link href="/" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">My Portofolio</Link>
+        <Link href="/" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">Contact</Link>
+
+        
         </div>
         </nav>
     )

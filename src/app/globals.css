@@ -5,10 +5,8 @@
 *{
   scroll-behavior: smooth;
 }
-homeImage{
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+Link{
+  transition: .3s ease-in;
 }
 nav{
   position: fixed;
@@ -34,7 +32,7 @@ h3{
   position: relative;
   align-content: center;
   width: 50vw;
-  height: 50vh;
+  height: 30vh;
   text-wrap: wrap;
   text-align: justify;
   margin-right: auto;
