@@ -19,10 +19,13 @@ module.exports = {
     },
     colors:{
       color:{
-        primary:"#02066F",
-        accent:"#FFF8E7",
-        secondary:"#221f1f",
-        secondaryAccent:"#60B0C0",
+        primary:"#0B1A28",
+        accent:"#DAA985",
+        secondary:"#4572AB",
+        secondaryAccent:"#102E47",
+        gray:"#273B5C",
+        winter:"#FFFEFA",
+        winterGradient:"#B7D3E3"
       }
     },
   },
