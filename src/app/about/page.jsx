@@ -8,7 +8,7 @@ const Page = () => {
         <h1 className="text-2xl md:text-4xl p-2 font-bold text-color-secondary pt-16 pb-8 mt-8 text-center">
           About Me
         </h1>
-        <div className="flex flex-col justify-center items-center md:flex-row bg-gradient-to-br from-color-gray  to-color-secondaryAccent p-4 md:p-12 rounded-lg space-x-4 space-y-4">
+        <div className="flex flex-col justify-center items-center md:flex-row bg-gradient-to-b from-color-gray  to-color-secondaryAccent p-4 md:p-12 rounded-lg space-x-4 space-y-4">
           <Image
             id="menu1"
             className="rounded-xl"
