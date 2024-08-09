@@ -1,16 +1,15 @@
  import Link from "next/link"
+import Menu from "./menu"
 const Navbar = () =>{
+    
     return(
         <nav className="bg-color-primary text-color-accent border border-color-secondary shadow-xl">
-        <div className=" flex flex-row justify-evenly  items-center mb-2 p-2">
-            <div className="flex max-w-64 max-h-12 text-2xl font-bold text-color-secondaryAccent">
+        <div className="flex flex-col space-y-2 md:flex-row justify-evenly sm:space-y-2 items-center mb-2 p-2">
+            <div className="flex-1 max-w-64 max-h-12 text-lg md:text-2xl font-bold text-color-secondaryAccent">
                 Owen Rudiyanto So
             </div>
-                <Link href="/"  className="text-2xl font-bold whitespace-nowrap  hover:text-color-secondaryAccent">Home</Link>
-        <Link href="/about" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">About Me</Link>
-        <Link href="/" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">My Portofolio</Link>
-        <Link href="/" className="text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent">Contact</Link>
-
+        <Menu></Menu>
+               
         
         </div>
         </nav>
