@@ -9,7 +9,7 @@ const Menu = () =>{
             <Link href="/"  className="text-sm md:text-2xl font-bold whitespace-nowrap  hover:text-color-secondaryAccent"><House size={24} /></Link>
             <Link href="/about" className="text-sm md:text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent"><UserRectangle size={24} /></Link>
             <Link href="/portfolio" className="text-sm md:text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent"><ClipboardText size={24} /></Link>
-            <Link href="/" className="text-sm md:text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent"><AddressBook size={24} /></Link>
+            <Link href="/contact" className="text-sm md:text-2xl font-bold whitespace-nowrap hover:text-color-secondaryAccent"><AddressBook size={24} /></Link>
             </div>
         </>
     )
