@@ -15,7 +15,17 @@ nav{
   opacity: 100%;
 
 }
-h1{
+.makeImageCircular {
+  border-radius:100%;
+  width: 350px;
+  height: 350px;
+}
+.makeImageCircularContact {
+  border-radius:100%;
+  width: 100px;
+  height: 100px;
+}
+/* h1{
   position: relative;
  
 }
@@ -32,7 +42,7 @@ h3{
   text-align: justify;
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
 
 @media only screen and (max-width: 768px) { 

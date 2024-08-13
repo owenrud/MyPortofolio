@@ -18,7 +18,7 @@ const Page = () => {
           height={100}
           src={profileImg}
           width={100}
-          className="mb-3 rounded-xl shadow-lg"
+          className="makeImageCircularContact mb-3 rounded-xl shadow-lg"
           style={{objectFit:"cover"}}
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Owen Rudiyanto So</h5>
