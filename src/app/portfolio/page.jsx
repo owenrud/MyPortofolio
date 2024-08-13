@@ -13,7 +13,7 @@ const Page = () => {
         <>
         <div className="h-screen p-8 bg-color-primary overflow-auto">
             <h1 className="text-3xl text-center text-color-secondary pt-20 md:pt-12 mb-4">My Portfolio</h1>
-            <Carousel  slideInterval={3000}>
+            <Carousel className="absolute md:left-96 md:w-6/12 md:h-6/12 bottom-8  left-0.5 right-2 p-4 md:p-0" slideInterval={3000}>
         <Image src={img1} width={1000} height={1000} style={{objectFit: "scale-down"}}></Image>
         <Image src={img2} width={1000} height={1000} style={{objectFit: "scale-down"}}></Image>
         <Image src={img3} width={1000} height={1000} style={{objectFit: "scale-down"}}></Image>

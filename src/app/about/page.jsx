@@ -4,7 +4,7 @@ import srcImage from "@/app/img_about.jpg";
 const Page = () => {
   return (
     <>
-      <div className="flex-1 flex-col justify-center items-center bg-color-primary min-h-screen pt-4">
+      <div className="flex-1 flex-col justify-center items-center bg-color-primary min-h-screen pt-4 p-4">
         <h1 className="text-2xl md:text-4xl p-2 font-bold text-color-secondary pt-16 pb-8 mt-8 text-center">
           About Me
         </h1>
