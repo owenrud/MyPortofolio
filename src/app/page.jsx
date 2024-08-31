@@ -2,6 +2,7 @@
 import Image from "next/image";
 import coverImg from "@/app/bg_cover.jpg";
 import { TypeAnimation } from "react-type-animation";
+import Page from "./about/page";
 
 const Home = () => {
   return (

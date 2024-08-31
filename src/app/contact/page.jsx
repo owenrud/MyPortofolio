@@ -8,9 +8,9 @@ const Page = () => {
     return(
         <>
         <div className="h-screen bg-color-primary p-4 pt-28 md:pt-20 overflow-auto">
-            <h1 className="text-4xl text-color-secondary text-center">Contact Me</h1>
-            <div className="flex-1 flex-col justify-center items-center mt-8 md:ml-96 md:mr-96 p-4 md:pl-28">
-            <Card className="max-w-lg">
+            <h1 className="flex text-4xl justify-center items-center text-color-secondary text-center">Contact Me</h1>
+            <div className="flex flex-col justify-center items-center mt-8 mx-auto p-2">
+            <Card className="CardResponsive">
       
       <div className="flex flex-col items-center pb-10">
         <Image

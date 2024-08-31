@@ -25,6 +25,9 @@ nav{
   width: 100px;
   height: 100px;
 }
+.CardResponsive{
+width: 100%;
+}
 /* h1{
   position: relative;
  
@@ -68,4 +71,7 @@ h3{
   #menu2{
     display: none;
   }
+  .CardResponsive{
+    width: 30%;
+    }
 }
