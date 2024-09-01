@@ -25,6 +25,7 @@ const Page = () => {
             src={srcImage}
             width={200}
             height={300}
+            alt="Owen Rudiyanto So Photo"
           ></Image>
           <Image
             id="menu2"
@@ -32,6 +33,7 @@ const Page = () => {
             src={srcImage}
             width={200}
             height={200}
+            alt="Owen Rudiyanto So Photo"
           ></Image>
           <div className="flex flex-col p-4 space-y-2">
             <h2 className="text-xl  text-justify text-color-accent mb-4">
@@ -48,183 +50,184 @@ const Page = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center">
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-xs md:text-base font-medium text-color-accent dark:text-white">
-                    <Image src={HtmlImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-xs md:text-base font-medium text-color-accent dark:text-white">
+                    <Image src={HtmlImage} width={40} height={40} alt="..."/>
                     HTML & CSS & JS
                   </span>
-                  <span class="flex text-sm font-medium text-color-accent items-end text-center dark:text-white">
+                  <span className="flex text-sm font-medium text-color-accent items-end text-center dark:text-white">
                     83%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "83%" }}
                   ></div>
                 </div>
               </div>
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white ">
-                    <Image src={PHPImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white ">
+                    <Image src={PHPImage} width={40} height={40} alt="..." />
                     <p className="mt-2 mx-1">PHP</p>
                   </span>
-                  <span class="flex text-sm font-medium text-color-accent dark:text-white items-end">
+                  <span className="flex text-sm font-medium text-color-accent dark:text-white items-end">
                     90%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "90%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
-                    <Image src={NJSImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
+                    <Image src={NJSImage} width={40} height={40} alt="..." />
                     Next.JS
                   </span>
-                  <span class="flex text-sm font-medium text-color-accent items-end dark:text-white">
+                  <span className="flex text-sm font-medium text-color-accent items-end dark:text-white">
                     40%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "40%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
                     <Image
                       src={PyImage}
                       width={40}
                       height={40}
+                      alt="..."
                     />
                     Python
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     25%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "25%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="flex flex-col text-base font-medium text-color-accent dark:text-white space-y-2">
-                    <Image src={MySQLImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="flex flex-col text-base font-medium text-color-accent dark:text-white space-y-2">
+                    <Image src={MySQLImage} width={40} height={40} alt="..."/>
                     <h1>MySQL</h1>
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     90%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "90%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="flex flex-col space-y-2 text-base font-medium text-color-accent dark:text-white">
-                  <Image src={FlutterImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="flex flex-col space-y-2 text-base font-medium text-color-accent dark:text-white">
+                  <Image src={FlutterImage} width={40} height={40} alt="..."/>
                     <h1>Flutter</h1>
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     50%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "50%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
-                  <Image src={JavaImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
+                  <Image src={JavaImage} width={40} height={40} alt="..." />
                     Java
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     30%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "30%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
-                  <Image src={CPlusImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
+                  <Image src={CPlusImage} width={40} height={40} alt="..."/>
                     C++
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     10%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "10%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
-                  <Image src={CSharpImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
+                  <Image src={CSharpImage} width={40} height={40} alt="..."/>
                     C#
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     25%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "25%" }}
                   ></div>
                 </div>
               </div>
 
               <div>
-                <div class="flex justify-between mb-1">
-                  <span class="text-base font-medium text-color-accent dark:text-white">
-                  <Image src={GolangImage} width={40} height={40} />
+                <div className="flex justify-between mb-1">
+                  <span className="text-base font-medium text-color-accent dark:text-white">
+                  <Image src={GolangImage} width={40} height={40} alt="..."/>
                     Golang
                   </span>
-                  <span class="flex items-end text-sm font-medium text-color-accent dark:text-white">
+                  <span className="flex items-end text-sm font-medium text-color-accent dark:text-white">
                     5%
                   </span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <div
-                    class="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
+                    className="bg-gradient-to-r from-color-secondary to-color-accent h-2.5 rounded-full"
                     style={{ width: "5%" }}
                   ></div>
                 </div>

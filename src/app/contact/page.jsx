@@ -2,6 +2,7 @@ import { Card } from "flowbite-react";
 import profileImg from "@/app/img_about.jpg"
 import Image from "next/image";
 import { EnvelopeSimple, Phone,MapPin,LinkedinLogo,GithubLogo,FacebookLogo} from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 
 
 const Page = () => {
@@ -24,26 +25,26 @@ const Page = () => {
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Owen Rudiyanto So</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400 mb-4">Developer</span>
         <div className="space-y-4">
-        <div className="flex flex-row items-center justify-between space-x-4 min-w-72">
-        <EnvelopeSimple className="text-color-accent" size={32}/>
+        <Link href="mailto:owenrudiantoso@gmail.com" target="_blank" className="flex flex-row items-center justify-between space-x-4 min-w-72 hover:text-color-winterGradient hover:font-bold hover:underline">
+          <EnvelopeSimple className="text-color-accent" size={32}/>
          <span className="flex-1 text-left text-lg text-wrap">owenrudiantoso@gmail.com</span>
-        </div>
-        <div className="flex flex-row items-center justify-between space-x-4 min-w-72">
+          </Link>
+        <Link  href="https://www.facebook.com/owen.rudiantosoo/" target="_blank" className="flex flex-row items-center justify-between space-x-4 min-w-72 hover:text-color-winterGradient hover:font-bold hover:underline">
         <FacebookLogo className="text-color-accent" size={32}/>
          <span className="flex-1 text-left text-lg text-wrap">Owen Rudianto Soo</span>
-        </div>
-        <div className="flex flex-row items-center  justify-between space-x-4 min-w-72">
+        </Link>
+        <Link  href="https://www.linkedin.com/in/owen-rudiyanto-so-b57993213/" target="_blank" className="flex flex-row items-center  justify-between space-x-4 min-w-72 hover:text-color-winterGradient hover:font-bold hover:underline">
         <LinkedinLogo className="text-color-accent" size={32}/>
          <span className="flex-1 text-left text-lg text-wrap">Owen Rudiyanto So</span>
-        </div>
-        <div className="flex flex-row items-center  justify-between space-x-4 min-w-72">
+        </Link>
+        <Link  href="https://github.com/owenrud" target="_blank" className="flex flex-row items-center  justify-between space-x-4 min-w-72 hover:text-color-winterGradient hover:font-bold hover:underline">
         <GithubLogo className="text-color-accent" size={32}/>
          <span className="flex-1 text-left text-lg text-wrap">github.com/owenrud</span>
-        </div>
-        <div className="flex flex-row items-center justify-between space-x-4 min-w-72">
+        </Link>
+        <Link  href="https://wa.me/628981054872" target="_blank" className="flex flex-row items-center justify-between space-x-4 min-w-72 hover:text-color-winterGradient hover:font-bold hover:underline">
         <Phone className="text-color-accent" size={32}/>
          <span className="flex-1 text-left  text-lg text-wrap">+628981054872</span>
-        </div>
+        </Link>
 
         <div className="flex flex-row items-center justify-between space-x-4 min-w-72">
         <MapPin className="text-color-accent" size={32}/>
