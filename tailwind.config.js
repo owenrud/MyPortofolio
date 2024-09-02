@@ -26,7 +26,10 @@ module.exports = {
         secondaryAccent:"#102E47",
         gray:"#273B5C",
         winter:"#FFFEFA",
-        winterGradient:"#B7D3E3"
+        winterGradient:"#B7D3E3",
+        winterSecondaryGradient:"#82B7DA",
+        winterDark:"#c5d2df",
+        winterDarker:"#b0c1d2",
       }
     },
   },
