@@ -61,7 +61,7 @@ const Home = () => {
           <div className="flex flex-wrap md:flex-col text-color-winter text-4xl mx-4 text-wrap ">
             <h1>{"< 1 Year Professional Experience"}</h1> 
           </div>
-          <div className="flex flex-wrap md:flex-col text-color-winter  text-4xl mx-4 text-wrap">
+          <div className="flex flex-col text-color-winter  text-4xl mx-4 text-wrap">
             <h1>5+ Projects Completed</h1>
           </div>
           <div className="flex flex-col text-color-winter  text-4xl mx-4 text-wrap">
