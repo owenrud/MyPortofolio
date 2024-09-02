@@ -2,31 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   scroll-behavior: smooth;
 }
-Link{
-  transition: .3s ease-in;
+Link {
+  transition: 0.3s ease-in;
 }
-nav{
+nav {
   position: fixed;
   z-index: 10;
   width: 100%;
   opacity: 100%;
-
 }
 .makeImageCircular {
-  border-radius:100%;
+  border-radius: 100%;
   width: 350px;
   height: 350px;
 }
 .makeImageCircularContact {
-  border-radius:100%;
+  border-radius: 100%;
   width: 100px;
   height: 100px;
 }
-.CardResponsive{
-width: 100%;
+.CardResponsive {
+  width: 100%;
 }
 /* h1{
   position: relative;
@@ -47,31 +46,65 @@ h3{
   margin-left: auto;
 } */
 
+.ContentImg {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(0px);
+  transition: 0,6s;
+  
+}
+.ContentImg:hover{
+  opacity: 1;
+  transition: ease-in-out .5s;
+}
+.ContentImgMobile{
+  display: none;
+  text-align: center;
+  top: 4;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
 
-@media only screen and (max-width: 768px) { 
-  #menu1 { 
-    display: none; 
-  } 
-  #menu2{
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  #menu1 {
+    display: none;
+  }
+  #menu2 {
     display: block;
   }
-  h3{
+  h3 {
     position: relative;
     width: 100%;
     text-wrap: wrap;
     text-align: justify;
-  
+  }
+  .ContentImg{
+    display: none;
+  }
+  .ContentImgMobile{
+    display: block;
   }
 }
 
-@media only screen and (min-width: 769px) { 
-  #menu1 { 
-    display: block; 
-  } 
-  #menu2{
+@media only screen and (min-width: 769px) {
+  #menu1 {
+    display: block;
+  }
+  #menu2 {
     display: none;
   }
-  .CardResponsive{
+  .CardResponsive {
     width: 30%;
-    }
+  }
 }
