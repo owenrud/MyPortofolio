@@ -11,7 +11,7 @@ const Menu = () =>{
         <>
          <Navbar className="bg-color-primary text-color-accent border border-color-gray shadow-xl max-w-full p-4" fluid rounded>
       <NavbarBrand as={Link} href="/">
-        <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">Owen Rudiyanto So</span>
+        <span className="self-center whitespace-nowrap text-xl md:text-3xl font-semibold dark:text-white">Owen Rudiyanto So</span>
       </NavbarBrand>
       <NavbarToggle className="text-color-accent focus:ring-color-accent hover:bg-color-accent hover:text-color-winter" />
       <NavbarCollapse >
