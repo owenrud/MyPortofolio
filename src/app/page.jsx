@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <div className="bg-gradient-to-br from-color-winterGradient to-color-secondary flex flex-col justify-evenly h-screen md:text-5xl space-y-4 overflow-auto">
         <div className="flex flex-col md:flex-row justify-center items-center">
-          <div className="makeCircle  rounded-full bg-color-accent shadow-xl shadow-color-gray relative mt-40">
+          <div className="makeCircle  rounded-full bg-color-accent shadow-xl shadow-color-gray relative mt-64 md:mt-24">
             <Image
               className="makeImageCircular absolute "
               src={coverImg}
