@@ -77,12 +77,7 @@ const tabsContent = {
     },
   ],
   "Next.js": [
-    {
-      title: "Shuttle Bus Website",
-      image: img1,
-      description: "Shuttle Bus Website",
-      category: "Next.js",
-    },
+   
 
     {
       title: "Anime List",
