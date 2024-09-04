@@ -58,6 +58,12 @@ const tabsContent = {
   ],
   Laravel: [
     {
+      title: "Shuttle Bus Website",
+      image: img1,
+      description: "Shuttle Bus Website",
+      category: "Next.js",
+    },
+    {
       title: "Volunteer Recruitment Website",
       image: img2,
       description: "Volunteer Recruitment Website",
@@ -77,8 +83,6 @@ const tabsContent = {
     },
   ],
   "Next.js": [
-   
-
     {
       title: "Anime List",
       image: img5,
@@ -129,13 +133,15 @@ const Page = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {tabsContent[activeTab].map((item, index) => (
-            <div key={index} className="relative flex flex-col justify-center items-center">
+            <div
+              key={index}
+              className="relative flex flex-col justify-center items-center"
+            >
               <Image
                 className="rounded-lg"
                 src={item.image}
                 width={1000}
                 height={1000}
-                
                 alt={item.title}
               />
               <h1 className="absolute flex bottom-0 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-color-winterSecondaryGradient bg-opacity-75 text-color-winter text-lg md:text-2xl font-semibold text-center justify-center  items-center rounded w-full h-10 md:h-16">
