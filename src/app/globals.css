@@ -10,15 +10,19 @@ Link {
 
 }
 nav {
-  position: fixed;
-  z-index: 10;
-  width: 100%;
+ 
   opacity: 100%;
 }
-.makeImageCircular {
-  border-radius: 100%;
-  width: 200px;
-  height: 200px;
+.ImagesBW {
+  filter: grayscale(100%);
+}
+.vl {
+  border-left: 1px solid white;
+  position: fixed;
+  left: 30.5%;
+  top:25%;
+  z-index: 0;
+  height: 340px;
 }
 .makeCircle{
   border-radius: 100%;
@@ -30,8 +34,16 @@ nav {
   width: 100px;
   height: 100px;
 }
+
 .CardResponsive {
   width: 100%;
+}
+li::marker {
+  color: white;
+}
+li {
+  margin-left: 24px;
+  list-style-type: disc;
 }
 
 
@@ -63,6 +75,9 @@ nav {
 
 }
 
+.responsiveIcon{
+  display: none;
+}
 
 
 
@@ -73,17 +88,18 @@ nav {
   #menu2 {
     display: block;
   }
-  h3 {
-    position: relative;
-    width: 100%;
-    text-wrap: wrap;
-    text-align: justify;
-  }
+
   .ContentImg{
     display: none;
   }
   .ContentImgMobile{
     display: block;
+  }
+  .responsiveIcon{
+    display: block;
+  }
+  .DesktopIcon{
+    display: none;
   }
 }
 

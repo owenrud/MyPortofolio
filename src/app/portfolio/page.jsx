@@ -9,6 +9,7 @@ import img4 from "@/app/portfolio-4.png";
 import img5 from "@/app/portfolio-5.png";
 import img6 from "@/app/portfolio-6.png";
 import img7 from "@/app/portfolio-7.png";
+
 import Image from "next/image";
 
 const tabsContent = {
