@@ -52,8 +52,10 @@ const Home = () => {
           
           <p className="text-color-accent md:pt-4 p-4 md:p-0 md:text-lg">I like to develop full-stack, drink coffee and get sudden coding idea from my gaming session or while listening music.</p>
           <div className="flex text-color-accent space-x-4 md:pt-4 ml-4 pb-8 md:ml-0 md:pb-0 items-center">
-            <div className="flex font-bold space-x-2 border px-3 py-1.5 rounded-lg">
-          <p className="text-center pt-1">Resume</p><FileArrowDown size={32}></FileArrowDown>
+            <div className="border px-3 py-1.5 rounded-lg">
+              <a className="flex flex-row font-bold gap-2 justify-center items-center" href="./Resume.pdf" target="_blank">
+              Resume <FileArrowDown size={32}></FileArrowDown>
+              </a>
             </div>
           <Link target="_blank" href="https://www.linkedin.com/in/owruso/"><LinkedinLogo  size={32}></LinkedinLogo></Link>
           <Link target="_blank" href="https://github.com/owenrud"><GithubLogo  size={32}></GithubLogo></Link>
