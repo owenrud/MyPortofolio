@@ -19,6 +19,10 @@ import img5 from "@/app/portfolio-5.png";
 import img6 from "@/app/portfolio-6.png";
 import img7 from "@/app/portfolio-7.png";
 import img8 from "@/app/portfolio_personal.png";
+import img9 from "@/app/portfolio-8-1.png";
+import img9sub1 from "@/app/portfolio-8-2.png";
+import img9sub2 from "@/app/portfolio-8-3.png";
+import img9sub3 from "@/app/portfolio-8-4.png";
 import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo, } from "@phosphor-icons/react";
 import Link from "next/link";
 import NavbarComponent from "@/Components/Navbar";
@@ -27,6 +31,42 @@ import React, { useState } from "react"
 
 const Home = () => {
   const [isEducation,setIsEducation] = useState(false)
+    const images = [
+      {
+        src:img9,
+        description: "Data visualization using PowerBI"
+      },
+      {
+        src:img9sub1,
+        description: "Another Data Visualization when clicking other colors at the Dashboard"
+      },
+      {
+        src:img9sub2,
+        description:"Another Data Visualization when clicking other colors at the Dashboard"
+      },
+      {
+        src:img9sub3,
+      description:"Data Cleaning and Feature Selection Process in Python using Pandas"
+}];
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+   const openModal = (index) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
    const handleContent = (type) => {
     
     // Set the state based on the button clicked
@@ -198,26 +238,103 @@ const Home = () => {
         <section id="portfolio" className="mt-6 md:w-7/12 mx-auto">
           <h1 className="text-color-accent font-bold text-3xl text-center">Projects</h1>
           <div className="flex grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center  p-12">
+             
+             {/*latest portfolio here*/}
             <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img1} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Shuttle Bus Booking</h1>
-              <h6 className="text-color-accent p-2">Shuttle Bus is a platform that allow users freely to choose and booking a shuttle bus with their needs.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For University Project</h2>
+              <div onClick={() => openModal(0)} className="relative cursor-pointer group">
+          <Image src={img9} width={500} height={500} alt="Project Image" className="rounded-lg" />
+           <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+    <span className="text-white text-lg font-semibold">Click for more details</span>
+  </div>
+        </div>
+              <h1 className="text-color-accent text-2xl p-2">Coffee Sales</h1>
+              <h6 className="text-color-accent p-2 ">A project to showcase my Data analyst and visualization skills.</h6>
+              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
               <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className="bg-color-accent rounded-lg p-1 ">Bootstrap</div>
-                <div className="bg-color-accent rounded-lg p-1 ">MySQL</div>
+                <div className="bg-color-accent rounded-lg p-1 ">PowerBI</div>
+                <div className=" bg-color-accent rounded-lg p-1 ">Python</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Data Analyst</div>
               </div>
             </div>
+             {/* Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <button onClick={closeModal} className="absolute top-5 right-5 text-white text-3xl">&times;</button>
+
+          <button onClick={prevImage} className="absolute left-5 text-white text-3xl">&#8592;</button>
+
+          <div className="relative w-[80%] max-w-4xl">
+           <>
+  <Image
+    src={images[currentIndex].src}
+    width={1000}
+    height={800}
+    alt="Popup"
+    className="rounded-lg object-contain w-full h-auto"
+  />
+  <p className="text-white text-3xl text-center mt-4 px-4 max-w-2xl mx-auto">
+    {images[currentIndex].description}
+  </p>
+</>
+          </div>
+
+          <button onClick={nextImage} className="absolute right-5 text-white text-3xl">&#8594;</button>
+        </div>
+      )}
+             {/*latest portfolio here*/}
+
+            <div className="flex flex-col h-full border rounded-lg p-1">
+              <Image src={img6} width={500} height={500}/>
+              <h1 className="text-color-accent text-2xl p-2">Digital Registration Event Management System</h1>
+              <h6 className="text-color-accent p-2 ">This is my Thesis Project, A cross-platform project allow event organizer using web platform to manage their events, And allow guest using mobile platform to see, register, absence events,
+                 And Print out Certificate of the events.</h6>
+              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
+              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
+                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
+                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Javascript</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">MySQL</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">RESTful API</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Flutter</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Dart</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Payment Gateway</div>
+              </div>
+            </div>
+           
             <div className="flex flex-col h-full border rounded-lg p-1">
               <Image src={img8} width={500} height={500}/>
               <h1 className="text-color-accent text-2xl p-2">Personal Portfolio</h1>
               <h6 className="text-color-accent p-2">This is my Personal Portfolio, where i showcase my projects and skills.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Owen Rudiyanto So</h2>
+              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
               <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
                 <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
                 <div className="bg-color-accent rounded-lg p-1 ">React</div>
                 <div className="bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
+              </div>
+            </div>
+             
+            <div className="flex flex-col h-full border rounded-lg p-1">
+              <Image src={img5} width={500} height={500}/>
+              <h1 className="text-color-accent text-2xl p-2">Anime List</h1>
+              <h6 className="text-color-accent p-2 ">This is my Personal Anime List to learn using Next.js for first time.</h6>
+              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
+              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
+                <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
+                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">React</div>
+              </div>
+            </div>
+             <div className="flex flex-col h-full border rounded-lg p-1">
+              <Image src={img4} width={500} height={500}/>
+              <h1 className="text-color-accent text-2xl p-2">Company profile</h1>
+              <h6 className="text-color-accent p-2 ">Company Profile for a introduction of the company</h6>
+              <h2 className="text-color-accent text-lg p-2"> For PT. Jawatha Pura Media Utama branch company</h2>
+              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
+                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
+                <div className=" bg-color-accent rounded-lg p-1 ">CSS</div>
+                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Bootstrap</div>
+                <div className=" bg-color-accent rounded-lg p-1">Javascript</div>
+                <div className=" bg-color-accent rounded-lg p-1">MySQL</div>
               </div>
             </div>
             <div className="flex flex-col h-full border rounded-lg p-1">
@@ -245,47 +362,7 @@ const Home = () => {
                 <div className=" bg-color-accent rounded-lg p-1">Blender</div>
               </div>
             </div>
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img4} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Company profile</h1>
-              <h6 className="text-color-accent p-2 ">Company Profile for a introduction of the company</h6>
-              <h2 className="text-color-accent text-lg p-2"> For PT. Jawatha Pura Media Utama branch company</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">CSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Bootstrap</div>
-                <div className=" bg-color-accent rounded-lg p-1">Javascript</div>
-                <div className=" bg-color-accent rounded-lg p-1">MySQL</div>
-              </div>
-            </div>
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img5} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Anime List</h1>
-              <h6 className="text-color-accent p-2 ">This is my Personal Anime List to learn using Next.js</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Owen Rudiyanto So</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">React</div>
-              </div>
-            </div>
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img6} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Digital Registration Event Management System</h1>
-              <h6 className="text-color-accent p-2 ">This is my Thesis Project, This a cross-platform project allow event organizer using web platform to manage their events, And allow guest using mobile platform to see, register, absence events,
-                 And Print out Certificate of the events.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Owen Rudiyanto So</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Javascript</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">MySQL</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">RESTful API</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Flutter</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Dart</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Payment Gateway</div>
-              </div>
-            </div>
+            
             <div className="flex flex-col h-full border rounded-lg p-1">
               <Image src={img7} width={500} height={500}/>
               <h1 className="text-color-accent text-2xl p-2">Sydney Speech Clinic</h1>
@@ -295,9 +372,23 @@ const Home = () => {
                 <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
                 <div className=" bg-color-accent rounded-lg p-1 ">React</div>
                 <div className="flex-1 bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
+              </div> 
+            </div>
+
+              <div className="flex flex-col h-full border rounded-lg p-1">
+              <Image src={img1} width={500} height={500}/>
+              <h1 className="text-color-accent text-2xl p-2">Shuttle Bus Booking</h1>
+              <h6 className="text-color-accent p-2">Shuttle Bus is a platform that allow users freely to choose and booking a shuttle bus with their needs.</h6>
+              <h2 className="text-color-accent text-lg p-2"> For University Project</h2>
+              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
+                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
+                <div className="bg-color-accent rounded-lg p-1 ">Bootstrap</div>
+                <div className="bg-color-accent rounded-lg p-1 ">MySQL</div>
               </div>
             </div>
+
           </div>
+         
         </section>
         {/*End of Portfolio Section */}
         
