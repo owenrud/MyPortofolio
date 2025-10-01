@@ -23,7 +23,7 @@ import img9 from "@/app/portfolio-8-1.png";
 import img9sub1 from "@/app/portfolio-8-2.png";
 import img9sub2 from "@/app/portfolio-8-3.png";
 import img9sub3 from "@/app/portfolio-8-4.png";
-import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo, } from "@phosphor-icons/react";
+import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo,CaretLeft,CaretRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import NavbarComponent from "@/Components/Navbar";
 import React, { useState,useRef, useEffect } from "react"
@@ -59,6 +59,12 @@ const Home = () => {
       languages: ["PowerBI", "Python", "Data Analyst"],
       image: img9,
       hasModal : true,
+      modalImages: [
+      {src :img9, description : "Data Visualization using Power BI"},
+      { src: img9sub1, description: "Another Data Visualization when clicking other colors at the Dashboard" },
+      { src: img9sub2, description: "Another Data Visualization when clicking other colors at the Dashboard" },
+      { src: img9sub3, description: "Data Cleaning and Feature Selection Process in Python using Pandas" },
+      ],
     },
     {
       id: 2,
@@ -103,23 +109,6 @@ const Home = () => {
     // ... add more projects
   ];
 
-    const images = [
-      {
-        src:img9,
-        description: "Data visualization using PowerBI"
-      },
-      {
-        src:img9sub1,
-        description: "Another Data Visualization when clicking other colors at the Dashboard"
-      },
-      {
-        src:img9sub2,
-        description:"Another Data Visualization when clicking other colors at the Dashboard"
-      },
-      {
-        src:img9sub3,
-      description:"Data Cleaning and Feature Selection Process in Python using Pandas"
-}];
   const categories = ["All", "Data Analyst", "Game Development", "Web Development"];
 
   const filteredProjects = projects.filter((project) => {
@@ -132,24 +121,40 @@ const Home = () => {
     return matchCategory && matchTech;
   });
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-   const openModal = (index) => {
-    setCurrentIndex(index);
-    setIsOpen(true);
-  };
+// Inside your component state
+const [currentIndex, setCurrentIndex] = useState(0); // project index
+const [currentModalIndex, setCurrentModalIndex] = useState(0); // image index
+const [isOpen, setIsOpen] = useState(false);
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+// Open modal
+const openModal = (index) => {
+  setCurrentIndex(index);
+  setCurrentModalIndex(0); // start with first image
+  setIsOpen(true);
+};
 
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+// Close modal
+const closeModal = () => {
+  setIsOpen(false);
+};
 
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+// Prev / Next navigation
+const prevImage = () => {
+  setCurrentModalIndex((prev) =>
+    prev === 0
+      ? projects[currentIndex].modalImages.length - 1
+      : prev - 1
+  );
+};
+
+const nextImage = () => {
+  setCurrentModalIndex((prev) =>
+    prev === projects[currentIndex].modalImages.length - 1
+      ? 0
+      : prev + 1
+  );
+};
+
 
    const handleContent = (type) => {
     
@@ -423,28 +428,52 @@ const Home = () => {
       </div>
 
       {/* Modal for Coffee Sales */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <button
-            onClick={closeModal}
-            className="absolute top-5 right-5 text-white text-3xl"
-          >
-            &times;
-          </button>
-          <div className="relative w-[80%] max-w-4xl">
-            <Image
-              src={projects[currentIndex].modalImages[0].src}
-              width={1000}
-              height={800}
-              alt="Popup"
-              className="rounded-lg object-contain w-full h-auto"
-            />
-            <p className="text-white text-3xl text-center mt-4 px-4 max-w-2xl mx-auto">
-              {projects[currentIndex].modalImages[0].description}
-            </p>
-          </div>
-        </div>
-      )}
+     {/* Modal for Coffee Sales */}
+{isOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+    {/* Close button */}
+    <button
+      onClick={closeModal}
+      className="absolute top-5 right-5 text-white text-3xl"
+    >
+      &times;
+    </button>
+{/* Prev button */}
+      <button
+        onClick={prevImage}
+        className="absolute z-10 left-1 md:left-12 top-1/2 -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-60 text-black p-2 rounded-full"
+      >
+        <CaretLeft size={24} weight="bold"/>
+      </button>
+    <div className="relative w-[90%] max-w-4xl flex flex-col items-center">
+      
+
+      {/* Main Image */}
+      <Image
+        src={projects[currentIndex].modalImages[currentModalIndex].src}
+        alt={projects[currentIndex].modalImages[currentModalIndex].description}
+        width={1000}
+        height={800}
+        className="rounded-lg object-contain w-full h-auto"
+      />
+
+      {/* Image description */}
+      <p className="text-white text-2xl text-center mt-4 px-4 max-w-2xl">
+        {projects[currentIndex].modalImages[currentModalIndex].description}
+      </p>
+    </div>
+    
+      {/* Next button */}
+      <button
+        onClick={nextImage}
+        className="absolute z-10 right-1 md:right-12 top-1/2 -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-60 text-black p-2 rounded-full"
+      >
+        <CaretRight size={24} weight="bold"/>
+      </button>
+  </div>
+)}
+
+
     </section>
         {/*End of Portfolio Section */}
         
