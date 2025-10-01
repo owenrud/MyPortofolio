@@ -26,11 +26,83 @@ import img9sub3 from "@/app/portfolio-8-4.png";
 import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo, } from "@phosphor-icons/react";
 import Link from "next/link";
 import NavbarComponent from "@/Components/Navbar";
-import React, { useState } from "react"
+import React, { useState,useRef, useEffect } from "react"
+
 
 
 const Home = () => {
   const [isEducation,setIsEducation] = useState(false)
+   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTech, setSelectedTech] = useState("All");
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+
+  
+  const btnRefs = useRef([]);
+  
+  useEffect(() => {
+    const index = categories.indexOf(selectedCategory);
+    const btn = btnRefs.current[index];
+    if (btn) {
+      setIndicatorStyle({
+        left: btn.offsetLeft,
+        width: btn.offsetWidth,
+      });
+    }
+  }, [selectedCategory]);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Coffee Sales",
+      description: "Showcase Data Analyst & Visualization skills.",
+      category: "Data Analyst",
+      languages: ["PowerBI", "Python", "Data Analyst"],
+      image: img9,
+      hasModal : true,
+    },
+    {
+      id: 2,
+      title: "Digital Registration Event Management System",
+      description: "Thesis Project: Event management cross-platform system.",
+      category: "Web Development",
+      languages: ["Laravel", "TailwindCSS", "Javascript", "MySQL", "Flutter", "Dart"],
+      image: img6,
+    },
+    {
+      id: 3,
+      title: "Prototype Educational Game",
+      description: "Prototype educational game inspired by Persona.",
+      category: "Game Development",
+      languages: ["Unity", "C#", "3D Rendering", "Blender"],
+      image: img3
+    },
+    {
+      id: 4,
+      title: "Personal Portfolio",
+      description: "My portfolio website to showcase my projects and skills.",
+      category: "Web Development",
+      languages: ["Next.js", "React", "TailwindCSS"],
+      image: img8,
+    },
+    {
+      id : 5,
+      title: "Volunteer Recruitment Website",
+      description: "Volunteer Recruitment is a platform for university students who seeking a volunteer job in university, having features similar to popular job site.",
+      category: "Web Development",
+      languages: ["Laravel", "Bootstrap", "Javascript","MySQL","CSS"],
+      image: img4,
+    },
+    {
+      id : 6,
+      title: "Shuttle Bus Website",
+      description: "Shuttle Bus is a platform that allow users freely to choose and booking a shuttle bus with their needs.",
+      category: "Web Development",
+      languages: ["Laravel", "Bootstrap", "Javascript","MySQL","CSS"],
+      image: img1,
+    }
+    // ... add more projects
+  ];
+
     const images = [
       {
         src:img9,
@@ -48,6 +120,18 @@ const Home = () => {
         src:img9sub3,
       description:"Data Cleaning and Feature Selection Process in Python using Pandas"
 }];
+  const categories = ["All", "Data Analyst", "Game Development", "Web Development"];
+
+  const filteredProjects = projects.filter((project) => {
+    const matchCategory =
+      selectedCategory === "All" || project.category === selectedCategory;
+
+    const matchTech =
+      selectedTech === "All" || project.languages.includes(selectedTech);
+
+    return matchCategory && matchTech;
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
    const openModal = (index) => {
@@ -82,15 +166,25 @@ const Home = () => {
       <div className="bg-color-primary justify-center items-center h-screen overflow-auto">
       <NavbarComponent/>
       { /*Parent div for this section*/} <section className="flex flex-col md:flex-row space-x-4 justify-center items-center md:mt-12 md:w-6/12 md:mx-auto" id="home">
-        <div className="flex flex-col  space-y-2">
+        <div className="flex flex-col pt-12 space-y-2">
         <div className="flex p-4 md:p-0 space-x-2 mt-6">
             <h1 className="text-color-accent font-bold text-3xl md:text-3xl">hi owen here </h1><HandWaving className="text-color-accent" size={48}/>
             </div>
           <div className="flex-1 md:space-x-2 p-4 md:p-0">
-          <h3 className="text-color-accent md:text-lg">22-years old Fresh Graduate, Back-end developer from Indonesia </h3> <Image src={Indonesia} width={24} height={24} style={{objectFit:"contain"}}/>
+          <h3 className="text-color-accent md:text-lg">23歳(years) Bachelor of Information System (B.C.S), A Data science and Back-end developer Enthusiast from Indonesia </h3> <Image src={Indonesia} width={24} height={24} style={{objectFit:"contain"}}/>
           </div>
           
-          <p className="text-color-accent md:pt-4 p-4 md:p-0 md:text-lg">I like to develop full-stack, drink coffee and get sudden coding idea from my gaming session or while listening music.</p>
+          <p className="text-color-accent md:pt-4 p-4 md:p-0 md:text-lg">I'm enjoy to develop a full-stack website, while have love and hate relationship with analyzing data, also frequently got sudden problem solving idea from my gaming session.</p>
+          <h1 className="text-color-accent md:pt-4 p-4 md:p-0 md:text-xl font-bold">Fun Fact about me</h1>
+          <ol className="text-color-accent space-y-2">
+            <li>Got TOEFL prediction score 550 not even fully lock in.</li>
+            <li>Ambitious boy, who want to pursue <span className="font-bold"> Master Degree of Computer Science</span> (because i got accepted in Information System Degree, it's still not enough from what i expected)</li>
+            <li>Have 2 different personality, the difference is like between heaven and earth.</li>
+            <li>A secret keeper, my mouth really tight to spill out my friends secret :D .</li>
+            <li>Having High GPA 3.69/4.00 equivalent to 2:1 in UK Terms, while still Looking for Work (anyone maybe who interested on me ('-')b)</li>
+            <li>Easy-going Person, if i'm knowing you in-person very well.</li>
+            <li>A "nerd" gamer / tech savvy(?) . </li>
+          </ol>
           <div className="flex text-color-accent space-x-4 md:pt-4 ml-4 pb-8 md:ml-0 md:pb-0 items-center">
             <div className="border px-3 py-1.5 rounded-lg">
               <a className="flex flex-row font-bold gap-2 justify-center items-center" href="./Resume.pdf" target="_blank">
@@ -103,39 +197,43 @@ const Home = () => {
           </div>
         </div>
             
-          <Image src={coverImg} width={265} height={265} style={{objectFit:"contain"}} className="rounded-lg"/>
+          <Image src={coverImg} width={265} height={265} style={{objectFit:"contain"}} alt="cover_img" className="rounded-lg"/>
 
           { /*Parent div for this section*/} </section>
 
 {/* About*/}
-        <section className="mt-20 w-full" id="about">
+        <section className="pt-20 w-full" id="about">
           
         { /*Parent div for this section*/}<div className="flex-col justify-center items-center space-y-4">
 
-            <div className="flex bg-color-secondary space-x-4 rounded-lg p-1 w-9/12 md:w-6/12 mx-auto">
-            <button
-        className={`${
-          !isEducation
-            ? "bg-color-primary text-color-accent"  // Default button class for Work
-            : "bg-color-secondary text-color-accent" // Altered button class for Education state
-        } rounded-lg px-3 py-0.5 font-semibold text-xl w-full`}
+           <div className="relative flex bg-color-secondary rounded-lg p-1.5 w-10/12 md:w-6/12 mx-auto overflow-hidden">
+      {/* Sliding background */}
+      <div
+        className="absolute top-1 bottom-1 bg-color-primary rounded-lg transition-transform duration-300 ease-in-out w-[48.25%] md:w-[49.25%]"
+        style={{
+          transform: isEducation ? "translateX(100%)" : "translateX(0%)",
+        }}
+      />
+
+      {/* Buttons */}
+      <button
+        className={`relative z-10 rounded-xl font-semibold text-xl w-full transition-colors duration-300 ${
+          !isEducation ? "text-color-accent" : "text-color-accent/70"
+        }`}
         onClick={() => handleContent("work")}
       >
         Work
       </button>
 
-      {/* Button for Education - dynamic className based on isEducation state */}
       <button
-        className={`${
-          isEducation
-            ? "bg-color-primary text-color-accent"  // Default button class for Education
-            : "bg-color-secondary text-color-accent" // Altered button class for Work state
-        } rounded-lg px-3 py-0.5 font-semibold text-xl w-full`}
+        className={`relative z-10 rounded-xl font-semibold text-xl w-full transition-colors duration-300 ${
+          isEducation ? "text-color-accent" : "text-color-accent/70"
+        }`}
         onClick={() => handleContent("education")}
       >
         Education
       </button>
-            </div>
+    </div>
             
             <div className="flex flex-col border border-color-accent space-x-4 space-y-4 rounded-lg p-4 md:p-8 md:w-6/12 mx-auto">
               {/*Content */}
@@ -146,7 +244,7 @@ const Home = () => {
    
                 {/* Left Side */}
                 <div>
-             <Image className="mt-4 rounded-full" style={{objectFit:"contain"}} src={UKDW} width={100} height={100}/>
+             <Image className="mt-4 rounded-full" style={{objectFit:"contain"}} src={UKDW} width={100} height={100} alt="Campus_logo_UKDW"/>
              </div>
              {/* Right SIde */}
              <div className="flex flex-col">
@@ -195,35 +293,35 @@ const Home = () => {
               <p className="text-2xl font-bold mb-4">Tech Stack</p>
               <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                 <div className="flex flex-row items-center space-x-2">
-              <Image className="ImagesBW" src={PHPImage} width={32} height={32}/>
+              <Image className="ImagesBW" src={PHPImage} width={32} height={32} alt="PHP"/>
                 <p className="text-color-accent">PHP</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={MySQLImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={MySQLImage} width={32} height={32} alt="MySQL"/>
                 <p className="text-color-accent">MySQL</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={PyImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={PyImage} width={32} height={32} alt="Python"/>
                 <p className="text-color-accent">Python</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={JavaImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={JavaImage} width={32} height={32} alt="Java"/>
                 <p className="text-color-accent">Java</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={CSharpImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={CSharpImage} width={32} height={32} alt="C#"/>
                 <p className="text-color-accent">C#</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={FlutterImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={FlutterImage} width={32} height={32} alt="Dart"/>
                 <p className="text-color-accent">Dart</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={GolangImage} width={32} height={32}/>
+                <Image className="ImagesBW" src={GolangImage} width={32} height={32} alt="Go"/>
                 <p className="text-color-accent">Go</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="bg-color-accent" src={NJSImage} width={32} height={32}/>
+                <Image className="bg-color-accent" src={NJSImage} width={32} height={32} alt="Next.js"/>
                 <p className="text-color-accent">Next.js</p>
                 </div>
               </div>
@@ -235,161 +333,119 @@ const Home = () => {
         {/* End of About Section*/}
         
         {/*Portfolio Section */}
-        <section id="portfolio" className="mt-6 md:w-7/12 mx-auto">
-          <h1 className="text-color-accent font-bold text-3xl text-center">Projects</h1>
-          <div className="flex grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center  p-12">
-             
-             {/*latest portfolio here*/}
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <div onClick={() => openModal(0)} className="relative cursor-pointer group">
-          <Image src={img9} width={500} height={500} alt="Project Image" className="rounded-lg" />
-           <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-    <span className="text-white text-lg font-semibold">Click for more details</span>
-  </div>
+        <section id="portfolio" className="md:w-7/12 mx-auto">
+        <div className="pt-24">
+            <h1 className="text-color-accent font-bold text-3xl text-center">Projects</h1>
         </div>
-              <h1 className="text-color-accent text-2xl p-2">Coffee Sales</h1>
-              <h6 className="text-color-accent p-2 ">A project to showcase my Data analyst and visualization skills.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">PowerBI</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">Python</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Data Analyst</div>
+    
+
+ <nav className="relative text-color-accent text-sm md:text-lg p-1.5 mt-12 mx-auto md:mt-16 border border-color-accent rounded-xl font-bold max-w-xs md:max-w-3xl">
+      <div className="flex justify-evenly relative">
+        {/* Sliding Indicator */}
+        <div
+          className="absolute top-1 bottom-1 bg-color-accent rounded-lg transition-all ease-in-out duration-300"
+          style={{
+            left: indicatorStyle.left,
+            width: indicatorStyle.width,
+          }}
+        />
+
+        {/* Buttons */}
+        {categories.map((cat, i) => (
+        <button
+  key={cat}
+  ref={(el) => (btnRefs.current[i] = el)}
+  onClick={() => setSelectedCategory(cat)}
+  className={`relative z-10 w-16 md:w-32 text-center px-1 py-1
+              whitespace-normal break-words leading-tight md:leading-normal
+              ${
+                selectedCategory === cat
+                  ? "text-color-primary"
+                  : "hover:text-color-accent"
+              }`}
+>
+  {cat}
+</button>
+
+        ))}
+      </div>
+    </nav>
+
+
+
+
+      {/* Projects Grid */}
+      <div className="flex grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center p-12">
+        {filteredProjects.map((project, index) => (
+          <div key={project.id} className="flex flex-col h-full border rounded-lg p-1">
+            {/* Special Coffee Sales with Modal */}
+            {project.id === 1 ? (
+              <div
+                onClick={() => openModal(index)}
+                className="relative cursor-pointer group"
+              >
+                <Image
+                  src={project.image}
+                  width={500}
+                  height={500}
+                  alt={project.title}
+                  className="rounded-lg"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+                  <span className="text-white text-lg font-semibold">
+                    Click for more details
+                  </span>
+                </div>
               </div>
+            ) : (
+              <Image
+                src={project.image}
+                width={500}
+                height={500}
+                alt={project.title}
+                className="rounded-lg"
+              />
+            )}
+
+            <h1 className="text-color-accent text-2xl p-2">{project.title}</h1>
+            <h6 className="text-color-accent p-2">{project.description}</h6>
+            <h2 className="text-color-accent text-lg p-2">{project.category}</h2>
+
+            <div className="grid grid-cols-3 p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
+              {project.languages.map((lang) => (
+                <div key={lang} className="bg-color-accent rounded-lg p-1">
+                  {lang}
+                </div>
+              ))}
             </div>
-             {/* Modal */}
+          </div>
+        ))}
+      </div>
+
+      {/* Modal for Coffee Sales */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <button onClick={closeModal} className="absolute top-5 right-5 text-white text-3xl">&times;</button>
-
-          <button onClick={prevImage} className="absolute left-5 text-white text-3xl">&#8592;</button>
-
+          <button
+            onClick={closeModal}
+            className="absolute top-5 right-5 text-white text-3xl"
+          >
+            &times;
+          </button>
           <div className="relative w-[80%] max-w-4xl">
-           <>
-  <Image
-    src={images[currentIndex].src}
-    width={1000}
-    height={800}
-    alt="Popup"
-    className="rounded-lg object-contain w-full h-auto"
-  />
-  <p className="text-white text-3xl text-center mt-4 px-4 max-w-2xl mx-auto">
-    {images[currentIndex].description}
-  </p>
-</>
+            <Image
+              src={projects[currentIndex].modalImages[0].src}
+              width={1000}
+              height={800}
+              alt="Popup"
+              className="rounded-lg object-contain w-full h-auto"
+            />
+            <p className="text-white text-3xl text-center mt-4 px-4 max-w-2xl mx-auto">
+              {projects[currentIndex].modalImages[0].description}
+            </p>
           </div>
-
-          <button onClick={nextImage} className="absolute right-5 text-white text-3xl">&#8594;</button>
         </div>
       )}
-             {/*latest portfolio here*/}
-
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img6} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Digital Registration Event Management System</h1>
-              <h6 className="text-color-accent p-2 ">This is my Thesis Project, A cross-platform project allow event organizer using web platform to manage their events, And allow guest using mobile platform to see, register, absence events,
-                 And Print out Certificate of the events.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Javascript</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">MySQL</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">RESTful API</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Flutter</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Dart</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Payment Gateway</div>
-              </div>
-            </div>
-           
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img8} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Personal Portfolio</h1>
-              <h6 className="text-color-accent p-2">This is my Personal Portfolio, where i showcase my projects and skills.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
-                <div className="bg-color-accent rounded-lg p-1 ">React</div>
-                <div className="bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-              </div>
-            </div>
-             
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img5} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Anime List</h1>
-              <h6 className="text-color-accent p-2 ">This is my Personal Anime List to learn using Next.js for first time.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Personal</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">React</div>
-              </div>
-            </div>
-             <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img4} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Company profile</h1>
-              <h6 className="text-color-accent p-2 ">Company Profile for a introduction of the company</h6>
-              <h2 className="text-color-accent text-lg p-2"> For PT. Jawatha Pura Media Utama branch company</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">CSS</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">Bootstrap</div>
-                <div className=" bg-color-accent rounded-lg p-1">Javascript</div>
-                <div className=" bg-color-accent rounded-lg p-1">MySQL</div>
-              </div>
-            </div>
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img2} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Volunteer Recruitment Website</h1>
-              <h6 className="text-color-accent p-2 ">Volunteer Recruitment is a platform for university students who seeking a volunteer job in university, having features similar to popular job site.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For University Project</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className=" bg-color-accent rounded-lg p-1">CSS</div>
-                <div className="bg-color-accent rounded-lg p-1">Bootstrap</div>
-                <div className=" bg-color-accent rounded-lg p-1">Javascript</div>
-                <div className="bg-color-accent rounded-lg p-1">MySQL</div>
-              </div>
-            </div>
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img3} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Prototype Educational Game</h1>
-              <h6 className="text-color-accent p-2 ">This is my Prototype Educational Game, Inspired by popular game title named Persona.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For University Project</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Unity</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">C#</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">3D Rendering</div>
-                <div className=" bg-color-accent rounded-lg p-1">Blender</div>
-              </div>
-            </div>
-            
-            <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img7} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Sydney Speech Clinic</h1>
-              <h6 className="text-color-accent p-2 ">This is Competition UI/UX Redesign for Sydney Speech Clinic at Freelancer website.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For Sydney Speech Clinic</h2>
-              <div className="grid grid-cols-3 p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Next.js</div>
-                <div className=" bg-color-accent rounded-lg p-1 ">React</div>
-                <div className="flex-1 bg-color-accent rounded-lg p-1 ">TailwindCSS</div>
-              </div> 
-            </div>
-
-              <div className="flex flex-col h-full border rounded-lg p-1">
-              <Image src={img1} width={500} height={500}/>
-              <h1 className="text-color-accent text-2xl p-2">Shuttle Bus Booking</h1>
-              <h6 className="text-color-accent p-2">Shuttle Bus is a platform that allow users freely to choose and booking a shuttle bus with their needs.</h6>
-              <h2 className="text-color-accent text-lg p-2"> For University Project</h2>
-              <div className="grid grid-cols-3  p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
-                <div className="bg-color-accent rounded-lg p-1 ">Laravel</div>
-                <div className="bg-color-accent rounded-lg p-1 ">Bootstrap</div>
-                <div className="bg-color-accent rounded-lg p-1 ">MySQL</div>
-              </div>
-            </div>
-
-          </div>
-         
-        </section>
+    </section>
         {/*End of Portfolio Section */}
         
          </div>
