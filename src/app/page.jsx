@@ -23,6 +23,15 @@ import img9 from "@/app/portfolio-8-1.png";
 import img9sub1 from "@/app/portfolio-8-2.png";
 import img9sub2 from "@/app/portfolio-8-3.png";
 import img9sub3 from "@/app/portfolio-8-4.png";
+import uimg1 from "@/app/ubuntu1.png";
+import uimg2 from "@/app/ubuntu2.png";
+import f1 from "@/app/feo1.png";
+import f2 from "@/app/feo2.png";
+import f3 from "@/app/feo3.png";
+import a1 from "@/app/arch1.png";
+import a2 from "@/app/arch2.png";
+import a3 from "@/app/arch3.png";
+import Linux from "@/app/linux.png"
 import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo,CaretLeft,CaretRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import NavbarComponent from "@/Components/Navbar";
@@ -73,6 +82,7 @@ const Home = () => {
       category: "Web Development",
       languages: ["Laravel", "TailwindCSS", "Javascript", "MySQL", "Flutter", "Dart"],
       image: img6,
+      hasModal : false,
     },
     {
       id: 3,
@@ -80,7 +90,8 @@ const Home = () => {
       description: "Prototype educational game inspired by Persona.",
       category: "Game Development",
       languages: ["Unity", "C#", "3D Rendering", "Blender"],
-      image: img3
+      image: img3,
+      hasModal : false,
     },
     {
       id: 4,
@@ -89,6 +100,7 @@ const Home = () => {
       category: "Web Development",
       languages: ["Next.js", "React", "TailwindCSS"],
       image: img8,
+      hasModal : false,
     },
     {
       id : 5,
@@ -97,6 +109,7 @@ const Home = () => {
       category: "Web Development",
       languages: ["Laravel", "Bootstrap", "Javascript","MySQL","CSS"],
       image: img4,
+      hasModal : false,
     },
     {
       id : 6,
@@ -105,11 +118,52 @@ const Home = () => {
       category: "Web Development",
       languages: ["Laravel", "Bootstrap", "Javascript","MySQL","CSS"],
       image: img1,
+      hasModal : false,
+    },
+    { id : 7,
+      title: "Ubuntu OS",
+      description: "Learning and Exploring Ubuntu OS",
+      category: "Linux",
+      languages: ["Ubuntu","Linux"],
+      image: uimg1,
+      hasModal : true,
+      modalImages:[
+        {src :uimg1, description : "Ubuntu Installed"},
+      { src: uimg2, description: "Exploring Ubuntu OS" },
+      ] ,
+    },
+    {
+      id : 8,
+      title: "Feodora OS",
+      description: "Exploring and Customizing Feodora OS",
+      category: "Linux",
+      languages: ["Feodora","Linux"],
+      image: f1,
+      hasModal : true,
+      modalImages:[
+        {src :f1, description : "Feodora Installed"},
+      { src: f2, description: "Exploring Feodora OS" },
+      {src: f3, description : "Customizing Feodora OS"},
+      ] ,
+    },
+    {
+      id : 9,
+      title: "Arch Linux",
+      description: "Learning and Exploring Arch Linux",
+      category: "Linux",
+      languages: ["Arch Linux","Linux"],
+      image: a1,
+      hasModal : true,
+      modalImages:[
+        {src :a1, description : "Arch Linux + Hyprland Installed"},
+      { src: a2, description: "Exploring Hyprland" },
+      {src : a3, description: "Customizing Hyprland"}
+      ] ,
     }
     // ... add more projects
   ];
 
-  const categories = ["All", "Data Analyst", "Game Development", "Web Development"];
+  const categories = ["All", "Data Analyst", "Game Development", "Web Development","Linux"];
 
   const filteredProjects = projects.filter((project) => {
     const matchCategory =
@@ -138,22 +192,22 @@ const closeModal = () => {
   setIsOpen(false);
 };
 
-// Prev / Next navigation
 const prevImage = () => {
   setCurrentModalIndex((prev) =>
     prev === 0
-      ? projects[currentIndex].modalImages.length - 1
+      ? filteredProjects[currentIndex].modalImages.length - 1
       : prev - 1
   );
 };
 
 const nextImage = () => {
   setCurrentModalIndex((prev) =>
-    prev === projects[currentIndex].modalImages.length - 1
+    prev === filteredProjects[currentIndex].modalImages.length - 1
       ? 0
       : prev + 1
   );
 };
+
 
 
    const handleContent = (type) => {
@@ -298,36 +352,40 @@ const nextImage = () => {
               <p className="text-2xl font-bold mb-4">Tech Stack</p>
               <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                 <div className="flex flex-row items-center space-x-2">
-              <Image className="ImagesBW" src={PHPImage} width={32} height={32} alt="PHP"/>
+              <Image src={PHPImage} width={32} height={32} alt="PHP"/>
                 <p className="text-color-accent">PHP</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={MySQLImage} width={32} height={32} alt="MySQL"/>
+                <Image  src={MySQLImage} width={32} height={32} alt="MySQL"/>
                 <p className="text-color-accent">MySQL</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={PyImage} width={32} height={32} alt="Python"/>
+                <Image  src={PyImage} width={32} height={32} alt="Python"/>
                 <p className="text-color-accent">Python</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={JavaImage} width={32} height={32} alt="Java"/>
+                <Image  src={JavaImage} width={32} height={32} alt="Java"/>
                 <p className="text-color-accent">Java</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={CSharpImage} width={32} height={32} alt="C#"/>
+                <Image  src={CSharpImage} width={32} height={32} alt="C#"/>
                 <p className="text-color-accent">C#</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={FlutterImage} width={32} height={32} alt="Dart"/>
+                <Image  src={FlutterImage} width={32} height={32} alt="Dart"/>
                 <p className="text-color-accent">Dart</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="ImagesBW" src={GolangImage} width={32} height={32} alt="Go"/>
+                <Image  src={GolangImage} width={32} height={32} alt="Go"/>
                 <p className="text-color-accent">Go</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
                 <Image className="bg-color-accent" src={NJSImage} width={32} height={32} alt="Next.js"/>
                 <p className="text-color-accent">Next.js</p>
+                </div>
+                <div className="flex flex-row items-center space-x-2">
+                <Image className="bg-color-accent" src={Linux} width={32} height={32} alt="Linux"/>
+                <p className="text-color-accent">Linux</p>
                 </div>
               </div>
 
@@ -384,7 +442,7 @@ const nextImage = () => {
         {filteredProjects.map((project, index) => (
           <div key={project.id} className="flex flex-col h-full border rounded-lg p-1">
             {/* Special Coffee Sales with Modal */}
-            {project.id === 1 ? (
+            {project.hasModal ? (
               <div
                 onClick={() => openModal(index)}
                 className="relative cursor-pointer group"
@@ -449,17 +507,18 @@ const nextImage = () => {
       
 
       {/* Main Image */}
-      <Image
-        src={projects[currentIndex].modalImages[currentModalIndex].src}
-        alt={projects[currentIndex].modalImages[currentModalIndex].description}
-        width={1000}
-        height={800}
-        className="rounded-lg object-contain w-full h-auto"
-      />
+     <Image
+  src={filteredProjects[currentIndex].modalImages[currentModalIndex].src}
+  alt={filteredProjects[currentIndex].modalImages[currentModalIndex].description}
+  width={1000}
+  height={800}
+  className="rounded-lg object-contain w-full h-auto"
+/>
+
 
       {/* Image description */}
       <p className="text-white text-2xl text-center mt-4 px-4 max-w-2xl">
-        {projects[currentIndex].modalImages[currentModalIndex].description}
+        {filteredProjects[currentIndex].modalImages[currentModalIndex].description}
       </p>
     </div>
     
