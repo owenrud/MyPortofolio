@@ -20,10 +20,10 @@ module.exports = {
     },
     colors:{
       color:{
-        primary:"#0B0909",
-        accent:"#D9D9D9",
-        accent2:"#AAA7AD",
-        secondary:"#212121",
+        primary:"#C3EEFA",
+        accent:"#C49C48",
+        accent2:"#FDFD96",
+        secondary:"#041A40",
 
       }
     },

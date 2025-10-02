@@ -219,25 +219,40 @@ const nextImage = () => {
       setIsEducation(false);
     }
   }
+
+    const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollTop / docHeight, 1); // 0 → 1
+      setScrollY(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
   return (
     <>
     
-      <div className="bg-color-primary justify-center items-center h-screen overflow-auto">
+      <div className="bg-gradient-to-t from-color-secondary to-color-primary justify-center items-center h-screen overflow-auto">
       <NavbarComponent/>
       { /*Parent div for this section*/} <section className="flex flex-col md:flex-row space-x-4 justify-center items-center md:mt-12 md:w-6/12 md:mx-auto" id="home">
         <div className="flex flex-col pt-12 space-y-2">
         <div className="flex p-4 md:p-0 space-x-2 mt-6">
-            <h1 className="text-color-accent font-bold text-3xl md:text-3xl">hi owen here </h1><HandWaving className="text-color-accent" size={48}/>
+            <h1 className="bg-gradient-to-r from-color-primary to-color-accent2 bg-clip-text inline-block text-transparent font-bold text-3xl md:text-3xl">hi owen here </h1><HandWaving className="text-color-primary" size={50}/>
             </div>
           <div className="flex-1 md:space-x-2 p-4 md:p-0">
-          <h3 className="text-color-accent md:text-lg">23歳(years) Bachelor of Information System (B.C.S), A Data science and Back-end developer Enthusiast from Indonesia </h3> <Image src={Indonesia} width={24} height={24} style={{objectFit:"contain"}}/>
+          <h3 className="text-color-secondary font-semibold md:text-xl">23歳(years) Graduate from Information System Major, got <span className="bg-gradient-to-r from-color-primary to-color-accent2 bg-clip-text inline-block text-transparent font-bold">Bachelor of Computer Science (B.C.S)</span>, A Data science and Back-end developer Enthusiast from Indonesia </h3> <Image src={Indonesia} width={24} height={24} style={{objectFit:"contain"}}/>
           </div>
           
-          <p className="text-color-accent md:pt-4 p-4 md:p-0 md:text-lg">I'm enjoy to develop a full-stack website, while have love and hate relationship with analyzing data, also frequently got sudden problem solving idea from my gaming session.</p>
-          <h1 className="text-color-accent md:pt-4 p-4 md:p-0 md:text-xl font-bold">Fun Fact about me</h1>
-          <ol className="text-color-accent space-y-2">
+          <p className="text-color-secondary font-semibold md:pt-4 p-4 md:p-0 md:text-lg">I'm enjoy to develop a full-stack website, while have love and hate relationship with analyzing data, also frequently got sudden problem solving idea from my gaming session.</p>
+          <h1 className="text-color-secondary md:pt-4 p-4 md:p-0 md:text-xl font-bold">Fun Fact about me</h1>
+          <ol className="text-color-secondary md:text-lg font-semibold space-y-2">
             <li>Got TOEFL prediction score 550 not even fully lock in.</li>
-            <li>Ambitious boy, who want to pursue <span className="font-bold"> Master Degree of Computer Science</span> (because i got accepted in Information System Degree, it's still not enough from what i expected)</li>
+            <li>Ambitious boy, who want to pursue <span className="bg-gradient-to-r from-color-primary to-color-accent2 bg-clip-text inline-block text-transparent font-bold"> Master Degree of Computer Science</span> (because i got accepted in Information System Degree, it's still not enough from what i expected)</li>
             <li>Have 2 different personality, the difference is like between heaven and earth.</li>
             <li>A secret keeper, my mouth really tight to spill out my friends secret :D .</li>
             <li>Having High GPA 3.69/4.00 equivalent to 2:1 in UK Terms, while still Looking for Work (anyone maybe who interested on me ('-')b)</li>
@@ -245,8 +260,8 @@ const nextImage = () => {
             <li>A "nerd" gamer / tech savvy(?) . </li>
           </ol>
           <div className="flex text-color-accent space-x-4 md:pt-4 ml-4 pb-8 md:ml-0 md:pb-0 items-center">
-            <div className="border px-3 py-1.5 rounded-lg">
-              <a className="flex flex-row font-bold gap-2 justify-center items-center" href="./Resume.pdf" target="_blank">
+            <div className="bg-gradient-to-br from-color-accent2 to-color-accent font-bold p-0.5 rounded-lg">
+              <a className="flex flex-row font-bold gap-2 justify-center items-center w-full bg-color-secondary rounded p-2" href="./Resume.pdf" target="_blank">
               Resume <FileArrowDown size={32}></FileArrowDown>
               </a>
             </div>
@@ -268,7 +283,7 @@ const nextImage = () => {
            <div className="relative flex bg-color-secondary rounded-lg p-1.5 w-10/12 md:w-6/12 mx-auto overflow-hidden">
       {/* Sliding background */}
       <div
-        className="absolute top-1 bottom-1 bg-color-primary rounded-lg transition-transform duration-300 ease-in-out w-[48.25%] md:w-[49.25%]"
+        className="absolute top-1 bottom-1 bg-color-accent rounded-lg transition-transform duration-300 ease-in-out w-[48.25%] md:w-[49.25%]"
         style={{
           transform: isEducation ? "translateX(100%)" : "translateX(0%)",
         }}
@@ -277,7 +292,7 @@ const nextImage = () => {
       {/* Buttons */}
       <button
         className={`relative z-10 rounded-xl font-semibold text-xl w-full transition-colors duration-300 ${
-          !isEducation ? "text-color-accent" : "text-color-accent/70"
+          !isEducation ? "text-color-secondary" : "text-color-accent hover:text-color-accent2 hover:scale-105 transition-all duration-150 ease-out"
         }`}
         onClick={() => handleContent("work")}
       >
@@ -286,15 +301,15 @@ const nextImage = () => {
 
       <button
         className={`relative z-10 rounded-xl font-semibold text-xl w-full transition-colors duration-300 ${
-          isEducation ? "text-color-accent" : "text-color-accent/70"
+          isEducation ? "text-color-secondary" : "text-color-accent hover:text-color-accent2 hover:scale-105 transition-all duration-150 ease-out"
         }`}
         onClick={() => handleContent("education")}
       >
         Education
       </button>
     </div>
-            
-            <div className="flex flex-col border border-color-accent space-x-4 space-y-4 rounded-lg p-4 md:p-8 md:w-6/12 mx-auto">
+            <div className="bg-gradient-to-br from-color-primary to-color-accent p-0.5 mx-auto md:w-6/12 rounded-lg">
+            <div className="flex flex-col bg-color-secondary space-x-4 space-y-4 rounded-lg p-4 md:p-8 mx-auto">
               {/*Content */}
               {isEducation ? 
               (
@@ -307,9 +322,9 @@ const nextImage = () => {
              </div>
              {/* Right SIde */}
              <div className="flex flex-col">
-             <p className="text-color-accent2 text-sm">Aug 2020 - Jul 2024</p>
-             <p className="text-color-accent text-lg">University Christian Duta Wacana</p>
-             <p className="text-color-accent2 text-md">Bachelor Degree in Information System</p>
+             <p className="text-color-accent2 text-sm md:text-lg">Aug 2020 - Jul 2024</p>
+             <p className="text-color-accent text-lg">Universitas Kristen Duta Wacana</p>
+             <p className="bg-gradient-to-r from-color-primary to-color-accent text-transparent bg-clip-text text-md md:text-lg font-bold">Sarjana Komputer (S.Kom) = Bachelor of Computer Science (B.C.S)</p>
              <ul className="text-color-accent space-y-4">
               <li>Major in Information Systems</li>
               <li>Graduated at July 2024 with Cumlaude Honour.</li>
@@ -337,6 +352,12 @@ const nextImage = () => {
  <li>Developed and optimized backend systems for applications, including RESTful API, resulting in a 30% increase in system efficiency and a 20% reduction in response time.</li>
  <li>Collaborated with frontend developers to integrate new features and functionalities into existing applications, resulting in completed project 1 week ahead of schedule</li>
 </ul>
+<h1 className="mt-8 text-color-accent md:text-lg">Tech Used</h1>
+<div className="flex flex-row gap-8 max-w-md mt-4">
+<Image src={PHPImage} width={32} height={32} alt="PHP"/>
+ <Image  src={MySQLImage} width={32} height={32} alt="MySQL"/>
+ <Image  src={FlutterImage} width={32} height={32} alt="Dart"/>
+</div>
 </div>
 </div>
 /* End of Work Content */
@@ -348,44 +369,45 @@ const nextImage = () => {
               
             </div>
             </div>
-            <div className="flex-col mx-auto text-color-accent p-8 md:p-0 md:w-6/12">
-              <p className="text-2xl font-bold mb-4">Tech Stack</p>
+            </div>
+            <div className="flex-col mx-auto bg-gradient-to-b from-color-primary to-color-accent2 font-bold text-transparent bg-clip-text p-8 md:p-0 md:w-6/12">
+              <p className=" text-2xl font-bold mb-4">Tech Stack</p>
               <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                 <div className="flex flex-row items-center space-x-2">
-              <Image src={PHPImage} width={32} height={32} alt="PHP"/>
-                <p className="text-color-accent">PHP</p>
+              <Image src={PHPImage} width={72} height={72} alt="PHP"/>
+                <p>PHP</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={MySQLImage} width={32} height={32} alt="MySQL"/>
-                <p className="text-color-accent">MySQL</p>
+                <Image  src={MySQLImage} width={72} height={72} alt="MySQL"/>
+                <p >MySQL</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={PyImage} width={32} height={32} alt="Python"/>
-                <p className="text-color-accent">Python</p>
+                <Image  src={PyImage} width={72} height={72} alt="Python"/>
+                <p >Python</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={JavaImage} width={32} height={32} alt="Java"/>
-                <p className="text-color-accent">Java</p>
+                <Image  src={JavaImage} width={72} height={72} alt="Java"/>
+                <p >Java</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={CSharpImage} width={32} height={32} alt="C#"/>
-                <p className="text-color-accent">C#</p>
+                <Image  src={CSharpImage} width={72} height={72} alt="C#"/>
+                <p >C#</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={FlutterImage} width={32} height={32} alt="Dart"/>
-                <p className="text-color-accent">Dart</p>
+                <Image  src={FlutterImage} width={72} height={72} alt="Dart"/>
+                <p >Dart</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image  src={GolangImage} width={32} height={32} alt="Go"/>
-                <p className="text-color-accent">Go</p>
+                <Image  src={GolangImage} width={72} height={72} alt="Go"/>
+                <p >Go</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="bg-color-accent" src={NJSImage} width={32} height={32} alt="Next.js"/>
-                <p className="text-color-accent">Next.js</p>
+                <Image src={NJSImage} width={72} height={72} alt="Next.js"/>
+                <p >Next.js</p>
                 </div>
                 <div className="flex flex-row items-center space-x-2">
-                <Image className="bg-color-accent" src={Linux} width={32} height={32} alt="Linux"/>
-                <p className="text-color-accent">Linux</p>
+                <Image  src={Linux} width={72} height={72} alt="Linux"/>
+                <p >Linux</p>
                 </div>
               </div>
 
@@ -398,15 +420,15 @@ const nextImage = () => {
         {/*Portfolio Section */}
         <section id="portfolio" className="md:w-7/12 mx-auto">
         <div className="pt-24">
-            <h1 className="text-color-accent font-bold text-3xl text-center">Projects</h1>
+            <h1 className="bg-gradient-to-b from-color-accent to-color-accent2 text-transparent bg-clip-text font-bold text-3xl text-center">Projects</h1>
         </div>
     
 
- <nav className="relative text-color-accent text-sm md:text-lg p-1.5 mt-12 mx-auto md:mt-16 border border-color-accent rounded-xl font-bold max-w-xs md:max-w-3xl">
+ <nav className="relative bg-color-primary/50 backdrop-blur-xl text-color-secondary text-sm md:text-lg p-1.5 mt-12 mx-auto md:mt-16 border border-color-accent rounded-xl font-bold max-w-xs md:max-w-3xl">
       <div className="flex justify-evenly relative">
         {/* Sliding Indicator */}
         <div
-          className="absolute top-1 bottom-1 bg-color-accent rounded-lg transition-all ease-in-out duration-300"
+          className="absolute top-1 bottom-1 bg-color-secondary rounded-lg transition-all ease-in-out duration-300"
           style={{
             left: indicatorStyle.left,
             width: indicatorStyle.width,
@@ -419,12 +441,12 @@ const nextImage = () => {
   key={cat}
   ref={(el) => (btnRefs.current[i] = el)}
   onClick={() => setSelectedCategory(cat)}
-  className={`relative z-10 w-16 md:w-32 text-center px-1 py-1
+  className={`relative z-10 w-16 md:w-48 text-center px-1 py-1
               whitespace-normal break-words leading-tight md:leading-normal
               ${
                 selectedCategory === cat
                   ? "text-color-primary"
-                  : "hover:text-color-accent"
+                  : "hover:text-color-accent2"
               }`}
 >
   {cat}
@@ -440,7 +462,7 @@ const nextImage = () => {
       {/* Projects Grid */}
       <div className="flex grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center p-12">
         {filteredProjects.map((project, index) => (
-          <div key={project.id} className="flex flex-col h-full border rounded-lg p-1">
+          <div key={project.id} className="flex flex-col h-full border border-color-accent bg-gradient-to-b from-color-accent to-color-secondary rounded-lg p-1">
             {/* Special Coffee Sales with Modal */}
             {project.hasModal ? (
               <div
@@ -470,13 +492,13 @@ const nextImage = () => {
               />
             )}
 
-            <h1 className="text-color-accent text-2xl p-2">{project.title}</h1>
-            <h6 className="text-color-accent p-2">{project.description}</h6>
-            <h2 className="text-color-accent text-lg p-2">{project.category}</h2>
+            <h1 className="bg-gradient-to-b from-color-accent to-color-accent2 font-bold text-transparent bg-clip-text text-2xl p-2">{project.title}</h1>
+            <h6 className="bg-gradient-to-b from-color-primary to-color-accent2 font-bold text-transparent bg-clip-text p-2">{project.description}</h6>
+            <h2 className="bg-gradient-to-r from-color-primary to-color-secondary font-bold text-transparent bg-clip-text text-lg p-2">{project.category}</h2>
 
             <div className="grid grid-cols-3 p-4 mt-4 mb-2 gap-4 justify-center items-center text-center">
               {project.languages.map((lang) => (
-                <div key={lang} className="bg-color-accent rounded-lg p-1">
+                <div key={lang} className="bg-gradient-to-b from-color-accent to-color-accent2 text-color-secondary font-semibold shadow-xl rounded-lg p-1">
                   {lang}
                 </div>
               ))}
