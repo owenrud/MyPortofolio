@@ -32,6 +32,9 @@ import a1 from "@/app/arch1.png";
 import a2 from "@/app/arch2.png";
 import a3 from "@/app/arch3.png";
 import Linux from "@/app/linux.png"
+import ds1 from "@/app/portfolio-ds1.png";
+import ds1sub1 from "@/app/portfolio-ds1-1.png";
+import ds1sub2 from "@/app/portfolio-ds1-2.png";
 import { BuildingOffice, Envelope, FileArrowDown, GithubLogo, HandWaving, LinkedinLogo,CaretLeft,CaretRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import NavbarComponent from "@/Components/Navbar";
@@ -159,6 +162,19 @@ const Home = () => {
         {src :a1, description : "Arch Linux + Hyprland Installed"},
       { src: a2, description: "Exploring Hyprland" },
       {src : a3, description: "Customizing Hyprland"}
+      ] ,
+    },
+    { id : 10,
+      title: "Prediction Education of Employees",
+      description: "Predicting Education of a Employee using Naive Bayes and Decision Tree",
+      category: "Data Analyst",
+      languages: ["Python","Machine Learning","Data Analyst","Data Science"],
+      image: ds1,
+      hasModal : true,
+      modalImages:[
+        {src :ds1, description : "Visualization of Decision Tree"},
+      { src: ds1sub1, description: "Source Code of the project"},
+      {src : ds1sub2, description: "Accuracy Result of the prediction from 2 approach"}
       ] ,
     }
     // ... add more projects
